@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="DemoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-08T07:55:00" hostname="devxu.local" time="0.008">
+  <properties/>
+  <testcase name="comparing_elements_in_two_iterables()" classname="DemoTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
