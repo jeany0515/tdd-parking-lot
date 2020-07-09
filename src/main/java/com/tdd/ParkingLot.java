@@ -13,6 +13,9 @@ public class ParkingLot {
         this.capacity = CAPACITY;
     }
 
+    public ParkingLot(int capacity) {
+        this.capacity = capacity;
+    }
     public Car fetchCar(CarTicket ticket) {
         Car car = carStorage.get(ticket);
         carStorage.remove(ticket);

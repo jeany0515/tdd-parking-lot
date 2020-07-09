@@ -100,4 +100,17 @@ public class ParkingBoyTest {
         //THEN
         assertSame(actual, null);
     }
+
+    @Test
+    public void should_return_a_ticket_when_parking_given_parking_lot_2_capacity_and_a_car() {
+        //GIVEN
+        parkingLot = new ParkingLot(2);
+        Car car = new Car();
+
+        //WHEN
+        CarTicket actual = parkingBoy.park(parkingLot, car);
+
+        //THEN
+        assertNotNull(actual);
+    }
 }
