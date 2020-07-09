@@ -115,4 +115,17 @@ public class ParkingBoyTest {
         //THEN
         assertNotNull(actual);
     }
+
+    @Test
+    public void should_return_error_message_when_fetch_given_no_ticket() {
+        //GIVEN
+        CarTicket ticket = null;
+
+        //WHEN
+        Exception exception = assertThrows(RuntimeException.class, () ->
+                parkingBoy.fetch(parkingLot, ticket));
+
+        //THEN
+        assertEquals("Please provide your parking ticket.", exception.getMessage());
+    }
 }

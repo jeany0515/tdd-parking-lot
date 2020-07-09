@@ -18,6 +18,9 @@ public class ParkingLot {
     }
 
     public Car fetchCar(CarTicket ticket) {
+        if (ticket == null) {
+            throw new RuntimeException("Please provide your parking ticket.");
+        }
         if (!carStorage.containsKey(ticket)) {
             throw new RuntimeException("Unrecognized parking ticket.");
         }
