@@ -12,11 +12,16 @@ public class ParkingBoy {
     }
 
     public CarTicket park(Car car) {
+        List<ParkingLot> availableLots = getAvailableParkingLots();
+        return availableLots.stream().findFirst().get().park(car);
+    }
+
+    protected List<ParkingLot> getAvailableParkingLots() {
         List<ParkingLot> availableLots = parkingLots.stream().filter(ParkingLot::isAvailable).collect(Collectors.toList());
         if (availableLots.size() == 0) {
             throw new RuntimeException("Not enough position.");
         }
-        return availableLots.stream().findFirst().get().park(car);
+        return availableLots;
     }
 
     public Car fetch(CarTicket ticket) {
