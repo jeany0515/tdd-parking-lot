@@ -37,4 +37,8 @@ public class ParkingLot {
     public boolean hasCar(CarTicket ticket) {
         return carStorage.containsKey(ticket);
     }
+
+    public int getAvailablePosition() {
+        return capacity - carStorage.size();
+    }
 }

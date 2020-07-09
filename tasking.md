@@ -65,3 +65,16 @@ The parking boy will park cars to the second parking lot when the first parking 
 
 AC2:
 All the requirement in Story 1 and Story 2 MUST be satisfied.
+
+###Story 4
+As a parking lots service manager.
+I would like to have another kind of parking boy to help me parking cars to multiple parking lots.
+So that the parking positions can be better used.
+
+The new kind of parking boy is called SMART PARKING BOY.
+
+AC1.
+The smart parking boy will always park cars to the parking lot which contains more empty positions.
+
+AC2:
+All the requirement in Story 1 and Story 2 MUST be satisfied.
