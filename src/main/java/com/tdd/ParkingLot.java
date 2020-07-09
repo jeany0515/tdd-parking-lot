@@ -19,24 +19,22 @@ public class ParkingLot {
     }
 
     public Car fetchCar(CarTicket ticket) {
-        if (ticket == null) {
-            throw new RuntimeException("Please provide your parking ticket.");
-        }
-        if (!carStorage.containsKey(ticket)) {
-            throw new RuntimeException("Unrecognized parking ticket.");
-        }
         Car car = carStorage.get(ticket);
         carStorage.remove(ticket);
         return car;
     }
 
     public CarTicket park(Car car) {
-        if (carStorage.size() == capacity) {
-            throw new RuntimeException("Not enough position.");
-        }
-
         CarTicket carTicket = new CarTicket();
         carStorage.put(carTicket, car);
         return carTicket;
+    }
+
+    public boolean isAvailable() {
+        return carStorage.size() < capacity;
+    }
+
+    public boolean hasCar(CarTicket ticket) {
+        return carStorage.containsKey(ticket);
     }
 }

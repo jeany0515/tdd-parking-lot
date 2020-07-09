@@ -137,4 +137,42 @@ public class ParkingBoyTest {
         //THEN
         assertEquals("Please provide your parking ticket.", exception.getMessage());
     }
+
+    @Test
+    public void should_get_parked_cars_when_fetch_given_parking_boy_manage_two_lots() {
+        //GIVEN
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        parkingBoy = new ParkingBoy(parkingLot1, parkingLot2);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        CarTicket ticket1 = parkingBoy.park(car1);
+        CarTicket ticket2 = parkingBoy.park(car2);
+
+        //WHEN
+        Car actual1 = parkingBoy.fetch(ticket1);
+        Car actual2 = parkingBoy.fetch(ticket2);
+        //THEN
+        assertSame(car1, actual1);
+        assertSame(car2, actual2);
+    }
+
+    @Test
+    public void should_return_no_position_when_park_given_parking_boy_manage_two_lots_both_full() {
+        //GIVEN
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        parkingBoy = new ParkingBoy(parkingLot1, parkingLot2);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        parkingBoy.park(car1);
+        parkingBoy.park(car2);
+
+        //WHEN
+        Exception exception = assertThrows(RuntimeException.class, () -> parkingBoy.park(car3));
+
+        //THEN
+        assertEquals("Not enough position.", exception.getMessage());
+    }
 }
