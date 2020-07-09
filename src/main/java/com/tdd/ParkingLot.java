@@ -16,7 +16,11 @@ public class ParkingLot {
     public ParkingLot(int capacity) {
         this.capacity = capacity;
     }
+
     public Car fetchCar(CarTicket ticket) {
+        if (!carStorage.containsKey(ticket)) {
+            throw new RuntimeException("Unrecognized parking ticket.");
+        }
         Car car = carStorage.get(ticket);
         carStorage.remove(ticket);
         return car;

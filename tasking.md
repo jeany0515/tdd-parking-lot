@@ -36,3 +36,20 @@ Thus (s)he will not get any ticket.
 *There are some cases which are not a requirement but may happen technically*
 Passing a parked car to a parking boy.
 Passing a null car to a parking boy.
+
+
+###Story 2
+As a customer, I would like to get some response message from the parking boy when I cannot fetch the car.
+So that I can know what happens.
+
+AC1: 
+When the customer gives a wrong ticket (the parking boy does not provide the ticket / the ticket has been used).
+Then no car should be fetched. If I query the error message, I can get an "Unrecognized parking ticket.".
+
+AC2: 
+When the customer does not provide a ticket when fetching a car. 
+The error message should be "Please provide your parking ticket."
+
+AC3: 
+When the parking boy attempt to park a car into a parking lot without a position. 
+The error message should be "Not enough position."
