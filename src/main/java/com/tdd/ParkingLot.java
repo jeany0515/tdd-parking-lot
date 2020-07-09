@@ -7,7 +7,9 @@ public class ParkingLot {
     Map<CarTicket, Car> carStorage = new HashMap<>();
 
     public Car fetchCar(CarTicket ticket) {
-        return carStorage.get(ticket);
+        Car car = carStorage.get(ticket);
+        carStorage.remove(ticket);
+        return car;
     }
 
     public CarTicket park(Car car) {
