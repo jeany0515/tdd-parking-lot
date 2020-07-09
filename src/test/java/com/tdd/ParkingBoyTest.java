@@ -7,22 +7,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingBoyTest {
     private ParkingBoy parkingBoy;
-    private  ParkingLot parkingLot;
-
-    @BeforeEach
-    void init() {
-        parkingBoy = new ParkingBoy();
-        parkingLot = new ParkingLot();
-    }
+    private ParkingLot parkingLot;
 
 
     @Test
     public void should_return_a_ticket_when_parking_given_a_car() {
         //GIVEN
+        parkingLot = new ParkingLot();
+        parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
 
         //WHEN
-        CarTicket actual = parkingBoy.park(parkingLot, car);
+        CarTicket actual = parkingBoy.park(car);
 
         //THEN
         assertNotNull(actual);
@@ -31,11 +27,13 @@ public class ParkingBoyTest {
     @Test
     public void should_return_the_parked_car__when_fetch_given_the_correspond_ticket() {
         //GIVEN
+        parkingLot = new ParkingLot();
+        parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
-        CarTicket ticket = parkingBoy.park(parkingLot, car);
+        CarTicket ticket = parkingBoy.park(car);
 
         //WHEN
-        Car actual = parkingBoy.fetch(parkingLot, ticket);
+        Car actual = parkingBoy.fetch(ticket);
 
         //THEN
         assertSame(car, actual);
@@ -44,14 +42,16 @@ public class ParkingBoyTest {
     @Test
     public void should_return_the_parked_two_cars_when_fetch_given_two_parked_cars_with_the_correspond_tickets() {
         //GIVEN
+        parkingLot = new ParkingLot();
+        parkingBoy = new ParkingBoy(parkingLot);
         Car car1 = new Car();
         Car car2 = new Car();
-        CarTicket ticket1 = parkingBoy.park(parkingLot, car1);
-        CarTicket ticket2 = parkingBoy.park(parkingLot, car2);
+        CarTicket ticket1 = parkingBoy.park(car1);
+        CarTicket ticket2 = parkingBoy.park(car2);
 
         //WHEN
-        Car actual1 = parkingBoy.fetch(parkingLot, ticket1);
-        Car actual2 = parkingBoy.fetch(parkingLot, ticket2);
+        Car actual1 = parkingBoy.fetch(ticket1);
+        Car actual2 = parkingBoy.fetch(ticket2);
 
         //THEN
         assertSame(car1, actual1);
@@ -62,11 +62,13 @@ public class ParkingBoyTest {
     @Test
     public void should_return_exception_when_fetch_given_wrong_ticket() {
         //GIVEN
+        parkingLot = new ParkingLot();
+        parkingBoy = new ParkingBoy(parkingLot);
         CarTicket ticket = new CarTicket();
 
         //WHEN
         Exception exception = assertThrows(RuntimeException.class, () ->
-                parkingBoy.fetch(parkingLot, ticket));
+                parkingBoy.fetch(ticket));
 
         //THEN
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
@@ -75,13 +77,15 @@ public class ParkingBoyTest {
     @Test
     public void should_return_exception_when_fetch_given_used_ticket() {
         //GIVEN
+        parkingLot = new ParkingLot();
+        parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
-        CarTicket carTicket = parkingBoy.park(parkingLot, car);
-        parkingBoy.fetch(parkingLot, carTicket);
+        CarTicket carTicket = parkingBoy.park(car);
+        parkingBoy.fetch(carTicket);
 
         //WHEN
         Exception exception = assertThrows(RuntimeException.class, () ->
-                parkingBoy.fetch(parkingLot, carTicket));
+                parkingBoy.fetch(carTicket));
 
         //THEN
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
@@ -90,14 +94,16 @@ public class ParkingBoyTest {
     @Test
     public void should_return_full_message_when_park_11th_car_given_parking_lot_have_parked_10_car() {
         //GIVEN
-        for(int i=1; i<=10; i++) {
+        parkingLot = new ParkingLot();
+        parkingBoy = new ParkingBoy(parkingLot);
+        for (int i = 1; i <= 10; i++) {
             Car car = new Car();
-            parkingBoy.park(parkingLot, car);
+            parkingBoy.park(car);
         }
         Car car_11th = new Car();
 
         //WHEN
-        Exception exception = assertThrows(RuntimeException.class, () -> parkingBoy.park(parkingLot, car_11th));
+        Exception exception = assertThrows(RuntimeException.class, () -> parkingBoy.park(car_11th));
 
         //THEN
         assertEquals("Not enough position.", exception.getMessage());
@@ -107,10 +113,11 @@ public class ParkingBoyTest {
     public void should_return_a_ticket_when_parking_given_parking_lot_2_capacity_and_a_car() {
         //GIVEN
         parkingLot = new ParkingLot(2);
+        parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
 
         //WHEN
-        CarTicket actual = parkingBoy.park(parkingLot, car);
+        CarTicket actual = parkingBoy.park(car);
 
         //THEN
         assertNotNull(actual);
@@ -119,11 +126,13 @@ public class ParkingBoyTest {
     @Test
     public void should_return_error_message_when_fetch_given_no_ticket() {
         //GIVEN
+        parkingLot = new ParkingLot();
+        parkingBoy = new ParkingBoy(parkingLot);
         CarTicket ticket = null;
 
         //WHEN
         Exception exception = assertThrows(RuntimeException.class, () ->
-                parkingBoy.fetch(parkingLot, ticket));
+                parkingBoy.fetch(ticket));
 
         //THEN
         assertEquals("Please provide your parking ticket.", exception.getMessage());

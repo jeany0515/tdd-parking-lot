@@ -14,6 +14,7 @@ public class ParkingLot {
     }
 
     public ParkingLot(int capacity) {
+        this.carStorage = new HashMap<>();
         this.capacity = capacity;
     }
 
