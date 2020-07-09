@@ -30,19 +30,15 @@ public class ParkingLot {
         return carTicket;
     }
 
-    public boolean isAvailable() {
-        return carStorage.size() < capacity;
-    }
-
     public boolean hasCar(CarTicket ticket) {
         return carStorage.containsKey(ticket);
     }
 
-    public int getAvailablePosition() {
+    public int getAvailableNumber() {
         return capacity - carStorage.size();
     }
 
     public double getEmptyRate() {
-        return getAvailablePosition() / this.capacity;
+        return getAvailableNumber() / this.capacity;
     }
 }

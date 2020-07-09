@@ -15,7 +15,7 @@ public class SmartParkingBoyTest {
         CarTicket ticket = smartParkingBoy.park(car);
 
         assertNotNull(ticket);
-        assertEquals(1, parkingLot2.getAvailablePosition());
+        assertEquals(1, parkingLot2.getAvailableNumber());
     }
 
     @Test

@@ -93,3 +93,11 @@ which has a larger available position rate (positions available / total capacity
 
 AC2: 
 All the requirement in Story 1 and Story 2 MUST be satisfied.
+
+
+Story 6
+As a parking lot service manager, I would like to manage several parking boys (including all three kinds of parking boys). And at the same time, I can act as a standard parking boy too. So that our work can be most efficient.
+Each parking lot service will have only one manager.
+AC1. The parking lot service manager can add parking boys to management list. And the parking lot manager can specify a parking boy on the list to park or fetch the car (only from the parking lots managed by that parking boy).
+AC2. The parking lot service manager can also manage parking lots. And (s)he can park or fetch the car just as a standard parking boy (Story 3). Note that (s)he can only store and fetch the car from his/her own parking lots.
+AC3. If the manager tells the parking boy to park or fetch the car, then the manager should be able to display the error message to the customer if the parking boy failed to do the operation.

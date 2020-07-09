@@ -17,7 +17,7 @@ public class ParkingBoy {
     }
 
     protected List<ParkingLot> getAvailableParkingLots() {
-        List<ParkingLot> availableLots = parkingLots.stream().filter(ParkingLot::isAvailable).collect(Collectors.toList());
+        List<ParkingLot> availableLots = parkingLots.stream().filter(lot -> lot.getAvailableNumber() >0 ).collect(Collectors.toList());
         if (availableLots.size() == 0) {
             throw new RuntimeException("Not enough position.");
         }

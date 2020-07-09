@@ -15,7 +15,7 @@ public class SuperParkingBoyTest {
         CarTicket ticket = superParkingBoy.park(car);
 
         assertNotNull(ticket);
-        assertEquals(0, parkingLot1.getAvailablePosition());
+        assertEquals(0, parkingLot1.getAvailableNumber());
     }
 
     @Test
@@ -30,8 +30,8 @@ public class SuperParkingBoyTest {
 
         superParkingBoy.park(car2);
 
-        assertEquals(1, parkingLot1.getAvailablePosition());
-        assertEquals(1, parkingLot2.getAvailablePosition());
+        assertEquals(1, parkingLot1.getAvailableNumber());
+        assertEquals(1, parkingLot2.getAvailableNumber());
     }
 
     @Test
