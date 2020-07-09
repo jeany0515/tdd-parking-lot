@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ParkingBoy {
-    protected final List<ParkingLot> parkingLots;
+    private final List<ParkingLot> parkingLots;
 
     public ParkingBoy(ParkingLot... parkingLots){
         this.parkingLots = Arrays.asList(parkingLots);
