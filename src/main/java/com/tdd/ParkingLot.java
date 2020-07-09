@@ -31,7 +31,7 @@ public class ParkingLot {
 
     public CarTicket park(Car car) {
         if (carStorage.size() == capacity) {
-            return null;
+            throw new RuntimeException("Not enough position.");
         }
 
         CarTicket carTicket = new CarTicket();

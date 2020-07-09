@@ -88,7 +88,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void should_return_no_ticket_when_park_11th_car_given_parking_lot_have_parked_10_car() {
+    public void should_return_full_message_when_park_11th_car_given_parking_lot_have_parked_10_car() {
         //GIVEN
         for(int i=1; i<=10; i++) {
             Car car = new Car();
@@ -97,10 +97,10 @@ public class ParkingBoyTest {
         Car car_11th = new Car();
 
         //WHEN
-        CarTicket actual = parkingBoy.park(parkingLot, car_11th);
+        Exception exception = assertThrows(RuntimeException.class, () -> parkingBoy.park(parkingLot, car_11th));
 
         //THEN
-        assertSame(actual, null);
+        assertEquals("Not enough position.", exception.getMessage());
     }
 
     @Test
